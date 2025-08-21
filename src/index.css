@@ -2,39 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Fintech Design System for Indian College Students */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Brand Colors */
+    --background: 240 10% 97%;
+    --foreground: 230 25% 15%;
 
+    /* Card System */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 230 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 230 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Trust Blue */
+    --primary: 220 70% 25%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 220 60% 35%;
+    --primary-glow: 220 80% 60%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Energy Orange */
+    --secondary: 25 90% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 25 80% 65%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Success - Growth Green */
+    --success: 145 65% 40%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 145 55% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Warm Saffron */
+    --accent: 35 85% 60%;
+    --accent-foreground: 230 25% 15%;
+    --accent-light: 35 75% 70%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Muted Colors */
+    --muted: 220 20% 94%;
+    --muted-foreground: 220 15% 45%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* System Colors */
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 25% 88%;
+    --input: 220 25% 88%;
+    --ring: 220 70% 25%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-light)));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(var(--success-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 50%, hsl(var(--secondary)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.8), hsl(220 20% 98% / 0.4));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(220 20% 20% / 0.08);
+    --shadow-medium: 0 8px 30px hsl(220 20% 20% / 0.12);
+    --shadow-strong: 0 12px 40px hsl(220 20% 20% / 0.15);
+    --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --radius: 0.5rem;
 
@@ -100,6 +131,96 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+@layer components {
+  /* Hero Components */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .card-glass {
+    background: var(--gradient-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(220 20% 88% / 0.3);
+  }
+
+  /* Animation Classes */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    box-shadow: var(--shadow-glow);
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  /* Smooth Transitions */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  /* Hover Effects */
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+}
+
+@layer utilities {
+  /* Custom Shadows */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-strong {
+    box-shadow: var(--shadow-strong);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.2); }
+  100% { box-shadow: 0 0 40px hsl(var(--primary-glow) / 0.4); }
 }
