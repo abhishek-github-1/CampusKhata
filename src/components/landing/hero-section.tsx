@@ -56,7 +56,7 @@ export const HeroSection = () => {
                     Get Started <ArrowRight className="w-5 h-5" />
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 border-white/30 text-white hover:bg-white hover:text-primary">
+                <Button variant="outline" size="lg" className="text-lg px-8 border-white/30 text-dark hover:bg-white hover:text-primary">
                   Watch Demo
                 </Button>
               </div>
